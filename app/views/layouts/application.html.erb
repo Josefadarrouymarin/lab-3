@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Y" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #e6f4ea; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="/" style="font-size: 1.5rem; font-family: 'Georgia', serif; color: #2e7d32;">Y</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link text-dark" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "About", about_path, class: "nav-link text-dark" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Contact", contact_path, class: "nav-link text-dark" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+    <%= yield %>
+    <footer class="text-center py-4" style="background-color: #e6f4ea; color: #2e7d32;">
+    <p class="mb-1 fw-semibold">&copy; 2024 Josefa Darrouy – All rights reserved.</p>
+    <div class="d-flex justify-content-center gap-3 mt-2">
+      <i class="bi bi-facebook fs-5"></i>
+      <i class="bi bi-twitter-x fs-5"></i>
+      <i class="bi bi-instagram fs-5"></i>
+    </div>
+  </footer>
+  
+</footer>
+  </body>
+</html>
+
